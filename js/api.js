@@ -10,8 +10,8 @@ const allPhones = () => {
 };
 
 const showPhoneDetails = (phones) => {
-    for (const data of phones) {
-        const parent = document.getElementById("phone-container");
+    const parent = document.getElementById("phone-container");
+    phones.forEach((data) => {
         const div = document.createElement("div");
         div.innerHTML = ` 
         <div class="col">
@@ -28,7 +28,7 @@ const showPhoneDetails = (phones) => {
                 </div>
             </div>`;
         parent.appendChild(div);
-    }
+    });
 };
 
 const details = (id) => {
@@ -39,14 +39,13 @@ const details = (id) => {
 };
 
 const setDetails = (phoneDetails) => {
-    console.log(phoneDetails.releaseDate);
-    console.log(phoneDetails.mainFeatures);
     document.getElementById("phone-container").innerHTML = `
     <div class="card w-auto mx-auto">
                     <img src="${phoneDetails.image}" class="card-img-top w-50 mx-auto p" alt="..." />
                     <div class="card-body mx-auto">
-                        <h5 class="card-title">${phoneDetails.brand}</h5>
+                        <h5 class="card-title fw-bolder">${phoneDetails.brand}</h5>
                         <h6 class="fw-bolder">Phone Name:  ${phoneDetails.name} </h6>
+                        
                         <h6 class="fw-bolder">Release Dat:  ${phoneDetails.releaseDate} </h6>
                     <div >
 
@@ -57,7 +56,7 @@ const setDetails = (phoneDetails) => {
                     <p class="fw-bolder">Memory: ${phoneDetails.mainFeatures.memory} </p>
                     <p class="fw-bolder">Sensors: ${phoneDetails.mainFeatures.sensors} </p>
                     </div>
-                <h4>Others</h4>       
+                <h4 class="fw-bolder">Other Feautres</h4>       
                     <p class="fw-bolder">WLAN: ${phoneDetails.others.WLAN} </p>
                     <p class="fw-bolder">Bluetooth: ${phoneDetails.others.Bluetooth} </p>
                     <p class="fw-bolder">GPS: ${phoneDetails.others.GPS} </p>
