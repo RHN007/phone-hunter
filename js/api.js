@@ -10,15 +10,15 @@ const allPhones = () => {
             if (info.data == null || info.data == "") {
                 document.getElementById("error").style.display = "block";
             } else {
-                showPhoneDetails(info.data);
+                showPhone(info.data);
                 document.getElementById("error").style.display = "none";
             }
         });
 };
 
-const showPhoneDetails = (phones) => {
+const showPhone = (phones) => {
     const parent = document.getElementById("phone-container");
-    phones.forEach((data) => {
+    phones.slice(0, 20).forEach((data) => {
         const div = document.createElement("div");
         div.innerHTML = ` 
         <div class="col">
