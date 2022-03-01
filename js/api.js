@@ -6,7 +6,14 @@ const allPhones = () => {
     // console.log(url);
     fetch(url)
         .then((res) => res.json())
-        .then((info) => showPhoneDetails(info.data));
+        .then((info) => {
+            if (info.data == null || info.data == "") {
+                document.getElementById("error").style.display = "block";
+            } else {
+                showPhoneDetails(info.data);
+                document.getElementById("error").style.display = "none";
+            }
+        });
 };
 
 const showPhoneDetails = (phones) => {
