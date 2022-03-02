@@ -18,6 +18,8 @@ const allPhones = () => {
         });
 };
 
+// Showing Mobile phone
+
 const showPhone = (phones) => {
     const parent = document.getElementById("phone-container");
     phones.slice(0, 20).forEach((data) => {
@@ -42,6 +44,8 @@ const showPhone = (phones) => {
     document.getElementById("search-box").value = "";
 };
 
+// Phone ID area
+
 const details = (id) => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`;
     fetch(url)
@@ -50,15 +54,18 @@ const details = (id) => {
 };
 
 const setDetails = (phoneDetails) => {
-    document.getElementById("details-container").innerHTML = `
-    
-    <div class="col">
+    //Destructuring
+    const { storage, displaySize, chipSet, memory } = phoneDetails.mainFeatures;
+    const { WLAN, Bluetooth, GPS, NFC, Radio, USB } = phoneDetails.others;
+
+    document.getElementById("details-container").innerHTML = `   
+    <div class="col shadow-lg rounded ">
     <div class="card w-50 mx-auto p-3 h-10 border-0 ">
                     <img src="${
                       phoneDetails.image
                     }" class="card-img-top w-50 h-50 mx-auto p-3" alt="..." />
                     <div class="card-body mx-auto">
-                        <h5 class="card-title fw-bolder fs-3 text-primary">${
+                        <h5 class="card-title fw-bolder fs-3 text-success">${
                           phoneDetails.brand
                         }</h5>
                         <h6 class="fw-bolder">Phone Name:  ${
@@ -72,33 +79,21 @@ const setDetails = (phoneDetails) => {
                     <div>
 
                 <h4 class="fw-bolder text-success " >Main Features</h4>
-                    <p class="fw-bolder">Storage: ${
-                      phoneDetails.mainFeatures.storage
-                    } </p>
-                    <p class="fw-bolder">Display Size: ${
-                      phoneDetails.mainFeatures.displaySize
-                    } </p>
-                    <p class="fw-bolder">Chipset: ${
-                      phoneDetails.mainFeatures.chipSet
-                    } </p>
-                    <p class="fw-bolder">Memory: ${
-                      phoneDetails.mainFeatures.memory
-                    } </p>
-                    <p class="fw-bolder">Sensors: ${
+                    <p> <span class="fw-bold">Storage:</span>  ${storage} </p>
+                    <p> <span class="fw-bold">Display Size:</span>  ${displaySize} </p>
+                    <p> <span class="fw-bold">Chipset:</span>  ${chipSet} </p>
+                    <p> <span class="fw-bold">Memory:</span>  ${memory} </p>
+                    <p> <span class="fw-bold">Sensors:</span>  ${
                       phoneDetails.mainFeatures.sensors
-                    } </p>
+                    }</p>
                     </div>
                 <h4 class="fw-bolder text-success">Other Feautres</h4>       
-                    <p class="fw-bolder">WLAN: ${phoneDetails.others.WLAN} </p>
-                    <p class="fw-bolder">Bluetooth: ${
-                      phoneDetails.others.Bluetooth
-                    } </p>
-                    <p class="fw-bolder">GPS: ${phoneDetails.others.GPS} </p>
-                    <p class="fw-bolder">NFC: ${phoneDetails.others.NFC} </p>
-                    <p class="fw-bolder">Radio: ${
-                      phoneDetails.others.Radio
-                    } </p>
-                     <p class="fw-bolder">USB: ${phoneDetails.others.USB} </p>
+                    <p> <span class="fw-bold">WLAN:</span>  ${WLAN} </p>
+                    <p> <span class="fw-bold">Bluetooth:</span>   ${Bluetooth} </p>
+                    <p> <span class="fw-bold">GPS:</span>   ${GPS} </p>
+                    <p> <span class="fw-bold"> NFC:</span>  ${NFC} </p>
+                    <p> <span class="fw-bold">Radio:</span>   ${Radio} </p>
+                    <p> <span class="fw-bold">USB:</span>  ${USB} </p>
                     </div> 
                     </div>`;
 };
