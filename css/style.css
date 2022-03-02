@@ -1,6 +1,11 @@
-body {
-    background-color: bisque;
+/* Font Awesome color */
+
+.fa-solid {
+    color: green
 }
+
+
+/* Error Handling  */
 
 #error {
     display: none;

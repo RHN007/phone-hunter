@@ -59,11 +59,11 @@ const setDetails = (phoneDetails) => {
     const { WLAN, Bluetooth, GPS, NFC, Radio, USB } = phoneDetails.others;
 
     document.getElementById("details-container").innerHTML = `   
-    <div class="col shadow-lg rounded ">
-    <div class="card w-50 mx-auto p-3 h-10 border-0 ">
+    <div class="col container">
+    <div class="card mx-auto p-3 h-10 border-0 ">
                     <img src="${
                       phoneDetails.image
-                    }" class="card-img-top w-50 h-50 mx-auto p-3" alt="..." />
+                    }" class="card-img-top w-75 mx-auto p-3" alt="..." />
                     <div class="card-body mx-auto">
                         <h5 class="card-title fw-bolder fs-3 text-success">${
                           phoneDetails.brand
